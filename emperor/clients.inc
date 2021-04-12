@@ -47,6 +47,24 @@ stock bool EMP_IsValidClient(int client, bool bAllowBots = false, bool bAllowDea
     return true;
 }
 
+stock void EMP_SetClientSpeed(int client, float speed)
+{
+    Client_SetMaxSpeed(client, speed);
+}
+
+stock void EMP_SetClientGravity(int client, float gravity)
+{
+    SetEntityGravity(client, gravity);
+}
+
+stock void EMP_SetClientDrug(int client, bool enable)
+{
+    if (enable)
+		CreateDrug(target);
+	else
+		KillDrug(target);
+}
+
 stock void EMP_SetClientFrags(int client, int val)
 {
     SetEntProp(client, Prop_Data, "m_iFrags", val);

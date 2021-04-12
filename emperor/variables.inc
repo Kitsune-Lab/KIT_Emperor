@@ -71,10 +71,9 @@ stock bool EMP_IntToBool(int input)
 */
 stock void EMP_FreeHandle(Handle &handle)
 {
-    if(handle != INVALID_HANDLE)
+    if(handle != null)
     {
-        CloseHandle(handle);
-        handle = INVALID_HANDLE;
+        delete handle;
     }
 }
 
@@ -85,10 +84,10 @@ stock void EMP_FreeHandle(Handle &handle)
 */
 stock void EMP_StopTimer(Handle &timer)
 {
-    if(timer != INVALID_HANDLE)
+    if(timer != null)
     {
         KillTimer(timer);
-        timer = INVALID_HANDLE;
+        timer = null;
     }
 }
 

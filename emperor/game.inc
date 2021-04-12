@@ -28,6 +28,11 @@ stock bool EMP_IsWarmUpPeriod()
 	return view_as<bool>(GameRules_GetProp("m_bWarmupPeriod"));
 }
 
+stock bool EMP_IsFreezeTime()
+{
+	return view_as<bool>(GameRules_GetProp("m_bFreezePeriod"));
+}
+
 stock void EMP_HintMessage(char[] Caption, int Timeout = 5, int HintTarget, char[] Color = "255,0,0")
 {
 	Event HintEvent = CreateEvent("instructor_server_hint_create", true);

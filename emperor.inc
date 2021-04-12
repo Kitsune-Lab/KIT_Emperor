@@ -31,7 +31,7 @@
 #endif
 #define _emperor_included
 
-#define EMPEROR_VERSION "3.1"
+#define EMPEROR_VERSION "3.81"
 
 #include <emperor/clients>
 #include <emperor/files>
@@ -39,6 +39,7 @@
 #include <emperor/messages>
 #include <emperor/variables>
 #include <emperor/debug>
+#include <emperor/sql>
 #include <emperor/entities>
 #include <emperor/menus>
 #include <emperor/game>

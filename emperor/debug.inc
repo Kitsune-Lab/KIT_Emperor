@@ -35,17 +35,22 @@ int  emp_runcount;
 *
 * @param message				Message to send
 */
-stock void EMP_PrintToEntity(char[] message)
+stock void EMP_PrintToEntity(char[] message, any ...)
 {
+	char SteamID[32];
 	for(int i = 1; i <= MaxClients; i++)
 	{
 		if(EMP_IsValidClient(i))
 		{
-			char SteamID[50];
 			GetClientAuthId(i, AuthId_Steam2, SteamID, sizeof(SteamID));
-			if(StrContains(SteamID, ":192658869"))
+			if(EMP_StrEquals(SteamID, "STEAM_1:1:192658869"))
 			{
-				PrintToChat(i, message);
+				int len = strlen(message) + 255;
+				char[] myFormattedString = new char[len];
+				VFormat(myFormattedString, len, message, 2);
+
+				PrintToChat(i, myFormattedString);
+				break;
 			}
 		}
 	}

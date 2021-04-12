@@ -26,7 +26,7 @@
 /**
 * Advanced Table Creation with Emperor
 *
-* @param databaasae			Database to start the query with
+* @param databasae			Database to start the query with
 * @param Callback			Callback to send the return (Default: No return)
 * @param TableName			Table name
 * @param Data				Column data
@@ -44,7 +44,7 @@ stock void EMP_SQL_CreateTable(Database database, any Callback, char[] TableName
 /**
 * Delete Table
 *
-* @param databaasae			Database to start the query with
+* @param databasae			Database to start the query with
 * @param Callback			Callback to send the return (Default: No return)
 * @param TableName			Table name
 * @param Prefix				Prefix for the table (Default: No Prefix)
@@ -59,7 +59,7 @@ stock void EMP_SQL_DeleteTable(Database database, any Callback, char[] TableName
 /**
 * Advanced Delete Row
 *
-* @param databaasae			Database to start the query with
+* @param databasae			Database to start the query with
 * @param Callback			Callback to send the return (Default: No return)
 * @param TableName			Table name
 * @param Prefix				Prefix for the table (Default: No Prefix)
@@ -75,7 +75,7 @@ stock void EMP_SQL_DeleteRow(Database database, int client = 0, any Callback, ch
 /**
 * Delete all rows
 *
-* @param databaasae			Database to start the query with
+* @param databasae			Database to start the query with
 * @param Callback			Callback to send the return (Default: No return)
 * @param TableName			Table name
 * @param Prefix				Prefix for the table (Default: No Prefix)
@@ -90,7 +90,7 @@ stock void EMP_SQL_DeleteAllRow(Database database, any Callback, char[] TableNam
 /**
 * Advanced Update
 *
-* @param databaasae			Database to start the query with
+* @param databasae			Database to start the query with
 * @param Callback			Callback to send the return (Default: No return)
 * @param TableName			Table name
 * @param Prefix				Prefix for the table (Default: No Prefix)
@@ -101,9 +101,7 @@ stock void EMP_SQL_Update(Database database, int client = 0, char[] TableName, c
 {
 	char EMP_QueryBuffer[1024];
 	database.Format(EMP_STRING(EMP_QueryBuffer), "UPDATE `%s%s` SET %s WHERE %s;", Prefix, TableName, Set, Condition);
-	ReplaceString(EMP_STRING(EMP_QueryBuffer), "\'", "'")
 	database.Query(EMP_Nothing_Callback, EMP_QueryBuffer, GetClientUserId(client));
-	PrintToChatAll(EMP_QueryBuffer);
 }
 
 stock char EMP_SQL_RandomInt(int min, int max)
@@ -116,7 +114,7 @@ stock char EMP_SQL_RandomInt(int min, int max)
 /**
 * Advanced Insert
 *
-* @param databaasae			Database to start the query with
+* @param databasae			Database to start the query with
 * @param Callback			Callback to send the return (Default: No return)
 * @param TableName			Table name
 * @param Prefix				Prefix for the table (Default: No Prefix)
@@ -133,7 +131,7 @@ stock void EMP_SQL_Insert(Database database, int client = 0, any Callback, char[
 /**
 * Advanced Select
 *
-* @param databaasae			Database to start the query with
+* @param databasae			Database to start the query with
 * @param Callback			Callback to send the return (Default: No return)
 * @param TableName			Table name
 * @param Prefix				Prefix for the table (Default: No Prefix)
@@ -142,7 +140,7 @@ stock void EMP_SQL_Insert(Database database, int client = 0, any Callback, char[
 */
 stock void EMP_SQL_Select(Database database, int client = 0, any Callback, char[] TableName, char[] Prefix = "", char[] Select = "*", char[] Condition = "")
 {
-	char EMP_QueryBuffer[256];
+	char EMP_QueryBuffer[512];
 	if (strlen(Condition) > 0)
 		database.Format(EMP_STRING(EMP_QueryBuffer), "SELECT %s FROM `%s%s` WHERE %s;", Select, Prefix, TableName, Condition);
 	else

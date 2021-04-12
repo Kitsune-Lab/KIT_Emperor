@@ -32,9 +32,9 @@ public int C_FlashCounter[MAXPLAYERS + 1] = 0;
 /**
 * Check if a weapon is valid or not
 *
-* @param entity			Entity
+* @param weaponEntity	Entity
 *
-* @return				True if vaalid, otherwise false
+* @return				True if valid, otherwise false
 */
 stock bool EMP_IsValidWeapon(int weaponEntity)
 {
@@ -48,6 +48,40 @@ stock bool EMP_IsValidWeapon(int weaponEntity)
 	EMP_SetWeaponClassname(weaponEntity, weaponClass, sizeof(weaponClass));
 	
 	return StrContains(weaponClass, "weapon_") == 0;
+}
+
+/**
+* Check if a weapon is grenade by weapon index
+*
+* @param weaponEntity	Entity
+*
+* @return				True if grenade, otherwise false
+*/
+stock bool EMP_IsWeaponGrenade(int weaponEntity)
+{
+	char weaponClass[64];
+	if (EMP_SetWeaponClassname(weaponEntity, weaponClass, sizeof(weaponClass)))
+	{
+		if (EMP_IsWeaponGrenade(weaponClass))
+			return true;
+	}
+
+	return false;
+}
+
+/**
+* Check if a weapon is grenade by classname
+*
+* @param weaponClass	Weapon Class to check
+*
+* @return				True if grenade, otherwise false
+*/
+stock bool EMP_IsWeaponGrenade(const char[] weaponClass)
+{
+	if (EMP_StrEquals(weaponClass, "weapon_decoy") || EMP_StrEquals(weaponClass, "weapon_flashbang") ||EMP_StrEquals(weaponClass, "weapon_hegrenade") ||EMP_StrEquals(weaponClass, "weapon_incgrenade") ||EMP_StrEquals(weaponClass, "weapon_molotov") ||EMP_StrEquals(weaponClass, "weapon_smokegrenade") ||EMP_StrEquals(weaponClass, "weapon_tagrenade"))
+		return true;
+	else
+		return false;
 }
 
 /**
