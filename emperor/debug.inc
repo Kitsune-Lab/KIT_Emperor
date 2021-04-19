@@ -85,7 +85,6 @@ stock void EMP_StartProfiler(bool reset = true)
 	{
 		emp_runcount++;
 	}
-	
 	EMP_PrintToEntity("\x02[DEBUG]\x10 Profiler started.");
 	StartProfiling(EMP_Benchmark);
 }

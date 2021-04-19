@@ -47,6 +47,33 @@ stock int EMP_GetRandomInt(int min = 0, int max = 2147483647)
     return RoundToCeil(float(random) / (float(2147483647) / float(max - min + 1))) + min - 1;
 }
 
+/**
+* Returns an escaped string
+*
+* @param string				String to escape
+* @param maxlen				Length of String
+* @param name				Name escape for Discord Support
+* @return					Returns the escaped string
+*/
+stock void EMP_EscapeString(char[] string, int maxlen, bool name = false)
+{
+    //For Discord support
+	if(name)
+	{
+		ReplaceString(string, maxlen, "everyone", "everyonｅ");
+		ReplaceString(string, maxlen, "here", "herｅ");
+		ReplaceString(string, maxlen, "discordtag", "dｉscordtag");
+	}
+
+	ReplaceString(string, maxlen, "#", "＃");
+	ReplaceString(string, maxlen, "@", "＠");
+	ReplaceString(string, maxlen, "_", "ˍ");
+	ReplaceString(string, maxlen, "'", "＇");
+	ReplaceString(string, maxlen, "`", "＇");
+	ReplaceString(string, maxlen, "~", "∽");
+	ReplaceString(string, maxlen, "\"", "＂");
+}
+
 
 stock float EMP_GetRandomFloat(float min = 0.0, float max = 5201314.0)
 {
@@ -82,12 +109,12 @@ stock void EMP_FreeHandle(Handle &handle)
 *
 * @param timer				The timer to stop
 */
-stock void EMP_StopTimer(Handle &timer)
+stock void EMP_StopTimer(Handle &handle)
 {
-    if(timer != null)
+    if(handle != null)
     {
-        KillTimer(timer);
-        timer = null;
+        KillTimer(handle);
+        handle = null;
     }
 }
 

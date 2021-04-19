@@ -99,7 +99,7 @@ stock int EMP_GetRandomColor()
 *
 * @param string				Strign to escape
 */
-stock void EMP_EscapeString(const char[] string, Database EMP_DB)
+stock void EMP_EscapeDBString(const char[] string, Database EMP_DB)
 {
 	int len = strlen(string) * 2 + 1;
 	char[len] escapedString = new char[len];
